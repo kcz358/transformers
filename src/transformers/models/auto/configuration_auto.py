@@ -845,8 +845,8 @@ class _LazyConfigMapping(OrderedDict):
     A dictionary that lazily load its values when they are requested.
     """
 
-    def __init__(self, mapping):
-        self._mapping = mapping
+    def __init__(self, mapping=None):
+        self._mapping = mapping if mapping is not None else {} # Hacking to accept None input for vllm
         self._extra_content = {}
         self._modules = {}
 
